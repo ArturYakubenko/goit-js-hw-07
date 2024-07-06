@@ -1,18 +1,24 @@
 
-const form = document.querySelector('.login-form')
-form.addEventListener('submit', handlerSubmit)
-
+const form = document.querySelector('.login-form');
+form.addEventListener('submit', handlerSubmit);
 
 function handlerSubmit(event) {
-  event.preventDefault()
-  const data = {}
-  const formData = new FormData(event.currentTarget)
-  formData.forEach((value, key) => {
-    if (!value) {
-      alert('All form fields must be filled in')
-    return
-  } data[key] = value.trim()})
-  form.reset()
-  console.log(data)
-}
+  event.preventDefault();
+  const data = {};
+  const formData = new FormData(event.currentTarget);
+  let allFieldsFilled = true;
 
+  formData.forEach((value, key) => {
+    if (!value.trim()) {
+      allFieldsFilled = false;
+    }
+    data[key] = value.trim();
+  });
+
+  if (!allFieldsFilled) {
+    return;
+  }
+
+  form.reset();
+  console.log(data);
+}

@@ -1,10 +1,10 @@
 
 
-const clickMe = document.querySelector('.change-color')
-const body = document.querySelector('body')
-let colorName = document.querySelector('.color')
+const clickMe = document.querySelector('.change-color');
+const body = document.querySelector('body');
+let colorName = document.querySelector('.color');
 
-clickMe.addEventListener('click',() => hendlerClick(body, getRandomHexColor(), colorName))
+clickMe.addEventListener('click', () => hendlerClick(body, colorName));
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
@@ -12,8 +12,8 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-function hendlerClick(element, color, text) {
-  element.style.backgroundColor = color
-  text.textContent = getRandomHexColor()
+function hendlerClick(element, text) {
+  const color = getRandomHexColor();
+  element.style.backgroundColor = color;
+  text.textContent = color;
 }
-
