@@ -8,6 +8,7 @@ const inputValue = divControls.querySelector("input")
 let boxValue 
 let acc = 30
 
+
 inputValue.addEventListener('blur', handlerInput)
 
 function handlerInput(event) {
@@ -18,12 +19,17 @@ createButton.addEventListener('click', createElements)
   
 function createElements() {
   lists.innerHTML = ""
+  let html = ""
   if (boxValue >= 1 && boxValue <= 100 && !isNaN(boxValue)) {
     for (let i = 0; i < boxValue; i++) {
-      const divBoxes = `<div style="width: ${acc}px; height:  ${acc}px; background-color: ${getRandomHexColor()}; margin-bottom: 10px;"></div>`
-      lists.insertAdjacentHTML('beforeend', divBoxes)
+       const divBoxes = `<div style="width: ${acc}px; height:  ${acc}px; background-color: ${getRandomHexColor()}; margin-bottom: 10px;"></div>`
       acc += 10
+      html += divBoxes
+     
     }
+      lists.insertAdjacentHTML('beforeend', html)
+
+    
     inputValue.value = ""
     acc = 30
   }
